@@ -11,12 +11,11 @@ class User < ApplicationRecord
     validates :last_name
     validates :first_name
   end
-  
+
   with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/ } do
     validates :last_name_kana
     validates :first_name_kana
   end
 
   validates :birth_date, presence: true
-
 end
