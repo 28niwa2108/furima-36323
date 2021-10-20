@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  
   with_options presence: true do
     validates :item_name
     validates :item_info
@@ -17,7 +16,7 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 300,
-    less_than_or_equal_to: 9999999
+    less_than_or_equal_to: 9_999_999
   }
 
   belongs_to :user
@@ -29,5 +28,4 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee_status
   belongs_to :prefecture
   belongs_to :delivery_schedule
-
 end
