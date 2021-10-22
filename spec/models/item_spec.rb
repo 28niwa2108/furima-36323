@@ -41,7 +41,7 @@ RSpec.describe '商品出品機能', type: :model do
     end
 
     it 'priceが(300以上)~9999999以下の数字なら出品できる' do
-      @item.price = 9999999
+      @item.price = 9_999_999
       expect(@item).to be_valid
     end
 
@@ -74,7 +74,7 @@ RSpec.describe '商品出品機能', type: :model do
       @item.price = ''
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
-   end
+    end
 
     it 'userが存在しないと出品できない' do
       @item.user = nil
@@ -155,7 +155,7 @@ RSpec.describe '商品出品機能', type: :model do
     end
 
     it 'priceが9999999を超えると出品できない' do
-      @item.price = 99999991
+      @item.price = 99_999_991
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
     end
