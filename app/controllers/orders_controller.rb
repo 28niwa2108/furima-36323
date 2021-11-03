@@ -19,22 +19,23 @@ class OrdersController < ApplicationController
   end
 
   private
+
   def set_item
     @item = Item.find(params[:item_id])
   end
 
   def sold_out_judgment
     order_count = Order.where(item_id: @item.id).length
-    if order_count == 0
-      return false
+    if order_count.zero?
+      false
     else
-      return true
+      true
     end
   end
 
   def order_params
     params.require(:order_address).permit(
-      :postal_code, 
+      :postal_code,
       :prefecture_id,
       :city,
       :address,

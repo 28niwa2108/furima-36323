@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, 
+  attr_accessor :postal_code,
                 :prefecture_id,
                 :city,
                 :address,
@@ -20,7 +20,7 @@ class OrderAddress
     }
     validates :city
     validates :address
-    validates :phone_number, length: { in: 10..11 },format: {
+    validates :phone_number, length: { in: 10..11 }, format: {
       with: /\A[0-9]+\z/, message: "is invalid. Input only number"
     }
     validates :user_id
@@ -31,13 +31,13 @@ class OrderAddress
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
     Address.create(
-      postal_code: postal_code, 
+      postal_code: postal_code,
       prefecture_id: prefecture_id,
       city: city,
       address: address,
       building: building,
       phone_number: phone_number,
-      order_id: order.id,
+      order_id: order.id
     )
   end
 end
