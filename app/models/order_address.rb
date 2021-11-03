@@ -1,14 +1,15 @@
 class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, 
-               :prefecture_id,
-               :city,
-               :address,
-               :building,
-               :phone_number,
-               :order_id,
-               :user_id,
-               :item_id
+                :prefecture_id,
+                :city,
+                :address,
+                :building,
+                :phone_number,
+                :order_id,
+                :user_id,
+                :item_id,
+                :token
 
   with_options presence: true do
     validates :postal_code, format: {
@@ -24,6 +25,7 @@ class OrderAddress
     }
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   def save
