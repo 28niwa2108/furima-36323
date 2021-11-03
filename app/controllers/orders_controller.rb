@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    redirect_to root_path if current_user == @item.user
+    redirect_to root_path if current_user == @item.user || sold_out_judgment
     @order_address = OrderAddress.new
   end
 
@@ -21,6 +21,15 @@ class OrdersController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def sold_out_judgment
+    order_count = Order.where(item_id: @item.id).length
+    if order_count == 0
+      return false
+    else
+      return true
+    end
   end
 
   def order_params
