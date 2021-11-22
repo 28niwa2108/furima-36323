@@ -56,7 +56,7 @@ cap.save
 
 #Orderデータ
 Order.create!(
-  user_id: 2, item_id: 2
+  id: 1, user_id: 2, item_id: 2
 )
 
 
