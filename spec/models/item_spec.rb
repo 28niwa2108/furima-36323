@@ -49,6 +49,11 @@ RSpec.describe '商品出品機能', type: :model do
       expect(@item.user).to be_truthy
       expect(@item).to be_valid
     end
+
+    it 'imageが添付されていれば出品できる' do
+      expect(@item.image.attached?).to eq(true)
+      expect(@item).to be_valid
+    end
   end
 
   context '商品出品ができないケース' do
@@ -80,6 +85,12 @@ RSpec.describe '商品出品機能', type: :model do
       @item.user = nil
       @item.valid?
       expect(@item.errors.full_messages).to include('User must exist')
+    end
+
+    it 'imageが添付されていないと出品できない' do
+      @item.image = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Image can't be blank")
     end
 
     it 'category_idが0(初期値)では出品できない' do
