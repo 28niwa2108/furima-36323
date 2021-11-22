@@ -47,6 +47,8 @@ GEM
     activerecord (6.0.4.1)
       activemodel (= 6.0.4.1)
       activesupport (= 6.0.4.1)
+    activerecord-import (1.2.0)
+      activerecord (>= 3.2)
     activestorage (6.0.4.1)
       actionpack (= 6.0.4.1)
       activejob (= 6.0.4.1)
@@ -306,6 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  activerecord-import
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   byebug
